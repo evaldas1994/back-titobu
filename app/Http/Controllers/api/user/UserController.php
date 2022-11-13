@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api\user;
 
 use App\Http\Requests\user\UserStoreUpdateRequest;
+use App\Http\Resources\user\UserCollection;
 use App\Http\Resources\user\UserResource;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
