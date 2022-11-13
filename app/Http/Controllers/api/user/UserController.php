@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $users = User::simplePaginate();
 
-        return response()->json((new userCollection($users)));
+        return response()->json(new userCollection($users));
     }
 
     public function store(UserStoreUpdateRequest $request): JsonResponse
