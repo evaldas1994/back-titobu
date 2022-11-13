@@ -1,1 +1,44 @@
-*.sqlite*
+/vendor/
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
+
+# Laravel 5 & Lumen specific
+public/storage
+public/hot
+
+# Laravel 5 & Lumen specific with changed public path
+public_html/storage
+public_html/hot
+
+storage/*.key
+.env*
+Homestead.yaml
+Homestead.json
+/.vagrant
+.phpunit.result.cache
+
+storage
+/storage
+/.idea
+/.vscode
+/public/build
+/public/css/
+/public/js/
+/public/fonts/
+/public/mix-manifest.json
+/logs/
+webpack.mix.js
+package-lock.json
+config/jwt.php
+
+.phpstorm.meta.php
+_ide_helper_models.php
+_ide_helper.php
+
+.DS_Store
+composer.lock
