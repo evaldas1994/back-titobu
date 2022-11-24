@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class Category extends Authenticatable
+class Category extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -30,10 +30,22 @@ class Category extends Authenticatable
         'name',
         'balance',
         'type',
+        'account_id',
+        'user_id',
     ];
 
     public function transfers()
     {
         return $this->hasMany(Transfer::class, 'category_id', 'id');
+    }
+
+    public function account()
+    {
+        return $this->belongsTo(Account::class);
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }

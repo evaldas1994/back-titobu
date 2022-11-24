@@ -3,29 +3,29 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Account;
 use App\Models\User;
 
 return new class extends Migration
 {
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
+        Schema::create(Account::TABLE_NAME, function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('user_id');
-            $table->double('balance', 10, 2);
-            $table->timestamps();
+            $table->double('balance', 10, 2)->default(0.00);
 
-            $table->foreign('user_id')
-                ->references('id')
-                ->on(User::TABLE_NAME)
-                ->onUpdate('RESTRICT')
-                ->onDelete('RESTRICT');
+            $table->foreignId('user_id')
+                ->constrained(User::TABLE_NAME)
+                ->restrictOnUpdate()
+                ->restrictOnDelete();
+
+            $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('accounts');
+        Schema::dropIfExists(Account::TABLE_NAME);
     }
 };

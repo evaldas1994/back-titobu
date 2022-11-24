@@ -34,4 +34,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Account::class, 'user_id', 'id');
     }
+
+    public function category()
+    {
+        return $this->hasOne(Category::class, 'user_id', 'id');
+    }
 }

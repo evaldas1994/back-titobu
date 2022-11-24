@@ -17,7 +17,6 @@ class AccountStoreUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:100'],
-            'user_id' => ['required','integer', Rule::exists(User::TABLE_NAME, 'id')],
             'balance' => ['required','numeric', 'min:0','max:999999.99', 'regex:/^\d+(\.\d{1,2})?$/'],
         ];
     }

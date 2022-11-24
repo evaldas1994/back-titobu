@@ -5,22 +5,33 @@ namespace App\Http\Controllers\api\account;
 use App\Http\Requests\account\AccountStoreUpdateRequest;
 use App\Http\Resources\account\AccountCollection;
 use App\Http\Resources\account\AccountResource;
+use App\Services\account\AccountService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use App\Models\Account;
 
 class AccountController extends Controller
 {
+    private AccountService $accountService;
+
+    public function __construct()
+    {
+        $this->accountService = new AccountService();
+    }
+
     public function index(): JsonResponse
     {
-        $accounts = Account::simplePaginate();
+        $accounts = Account::whereUserId(auth()->id())->simplePaginate();
 
         return response()->json((new AccountCollection($accounts)));
     }
 
     public function store(AccountStoreUpdateRequest $request): JsonResponse
     {
-        $account = Account::create($request->validated());
+        $validated = $request->validated();
+        $validated = $this->accountService->addUser($validated);
+
+        $account = $this->accountService->store($validated);
 
         return response()->json(new AccountResource($account), 201);
     }
@@ -32,14 +43,17 @@ class AccountController extends Controller
 
     public function update(AccountStoreUpdateRequest $request, Account $account): JsonResponse
     {
-        $account->update($request->validated());
+        $validated = $request->validated();
+        $validated = $this->accountService->addUser($validated);
+
+        $account = $this->accountService->update($account, $validated);
 
         return response()->json(new AccountResource($account));
     }
 
     public function destroy(Account $account): JsonResponse
     {
-        $account->delete();
+        $this->accountService->delete($account);
 
         return response()->json(null, 204);
     }

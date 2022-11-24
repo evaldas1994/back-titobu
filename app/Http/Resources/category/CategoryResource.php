@@ -14,6 +14,8 @@ class CategoryResource extends BaseResource
             'name' => $this->name,
             'balance' => $this->floatFormat($this->balance),
             'type' => $this->type,
+            'account_id' => $this->account_id,
+            'account_name' => $this->account->name,
             'transfers' => new TransferCollection($this->transfers),
         ];
     }
