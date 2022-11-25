@@ -232,7 +232,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $response = $this
             ->withHeaders($this->getApiHeaders())
@@ -245,7 +245,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $response = $this
             ->withHeaders($this->getApiHeaders())
@@ -269,7 +269,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
 
@@ -284,7 +284,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
 
@@ -298,7 +298,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
         $data['name'] = '';
@@ -314,7 +314,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
         $data['amount'] = '';
@@ -330,7 +330,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
         $data['category_id'] = '';
@@ -346,7 +346,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
         $data['account_id'] = '';
@@ -362,7 +362,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
         $data['name'] = null;
@@ -378,7 +378,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
         $data['amount'] = null;
@@ -394,7 +394,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
         $data['category_id'] = null;
@@ -410,7 +410,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
         $data['account_id'] = null;
@@ -426,7 +426,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
         $data['amount'] = 0;
@@ -442,7 +442,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
         $data['category_id'] = 2;
@@ -458,7 +458,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $data = $this->getData();
         $data['account_id'] = 2;
@@ -475,7 +475,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $response = $this
             ->withHeaders($this->getApiHeaders())
@@ -488,7 +488,7 @@ class TransferTest extends TestCase
     {
         $user = User::factory()->create();
         $data = $this->getData();
-        $transfer = Transfer::factory()->create();
+        $transfer = Transfer::factory()->create(['user_id' => $user->id]);
 
         $response = $this
             ->withHeaders($this->getApiHeaders())

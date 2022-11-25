@@ -3,6 +3,7 @@
 namespace App\Http\Requests\transfer;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\Category;
 use App\Models\Account;
@@ -11,7 +12,7 @@ class TransferStoreUpdateRequest extends FormRequest
 {
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     public function rules()

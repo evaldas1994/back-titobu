@@ -5,10 +5,8 @@ namespace App\Http\Controllers\api\category;
 use App\Http\Requests\category\CategoryStoreUpdateRequest;
 use App\Http\Resources\category\CategoryCollection;
 use App\Http\Resources\category\CategoryResource;
-use App\Http\Controllers\Controller;
-use App\Models\Account;
 use App\Services\category\CategoryService;
-use App\Services\Service;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use App\Models\Category;
 
@@ -23,7 +21,9 @@ class CategoryController extends Controller
 
     public function index(): JsonResponse
     {
-        $categories = Category::whereUserId(auth()->id())->simplePaginate();
+        $categories = Category::whereUserId(auth()->id())
+            ->orderBy('created_at', 'desc')
+            ->simplePaginate();
 
         return response()->json((new CategoryCollection($categories)));
     }
@@ -55,7 +55,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category): JsonResponse
     {
-        $category->delete();
+        $this->categoryService->delete($category);
 
         return response()->json(null, 204);
     }

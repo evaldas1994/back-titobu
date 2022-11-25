@@ -12,6 +12,8 @@ class TransferResource extends BaseResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'user_id' => $this->user_id,
+            'user_name' => $this->user->name,
             'amount' => $this->floatFormat($this->amount),
             'category_id' => $this->category_id,
             'category_name' => $this->category->name,

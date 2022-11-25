@@ -21,7 +21,9 @@ class AccountController extends Controller
 
     public function index(): JsonResponse
     {
-        $accounts = Account::whereUserId(auth()->id())->simplePaginate();
+        $accounts = Account::whereUserId(auth()->id())
+            ->orderBy('created_at', 'desc')
+            ->simplePaginate();
 
         return response()->json((new AccountCollection($accounts)));
     }

@@ -12,6 +12,8 @@ class CategoryResource extends BaseResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'user_id' => $this->user_id,
+            'user_name' => $this->user->name,
             'balance' => $this->floatFormat($this->balance),
             'type' => $this->type,
             'account_id' => $this->account_id,

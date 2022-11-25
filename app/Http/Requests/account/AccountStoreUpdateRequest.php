@@ -3,6 +3,7 @@
 namespace App\Http\Requests\account;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\Models\User;
 
@@ -10,7 +11,7 @@ class AccountStoreUpdateRequest extends FormRequest
 {
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     public function rules()

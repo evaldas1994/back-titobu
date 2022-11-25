@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Category;
 use App\Models\Transfer;
 use App\Models\Account;
+use App\Models\User;
 
 return new class extends Migration
 {
@@ -20,6 +21,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->double('amount', 10, 2);
+
+            $table->foreignId('user_id')
+                ->constrained(User::TABLE_NAME)
+                ->restrictOnUpdate()
+                ->restrictOnDelete();
 
             $table->foreignId('category_id')
                 ->constrained(Category::TABLE_NAME)

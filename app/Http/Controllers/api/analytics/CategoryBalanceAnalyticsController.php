@@ -11,7 +11,10 @@ class CategoryBalanceAnalyticsController extends Controller
 {
     public function __invoke(): JsonResponse
     {
-        $categories = Category::where('type', '=', Category::TYPE_OUT)->get();
+        $categories = Category::whereUserId(auth()->id())
+            ->whereType(Category::TYPE_OUT)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return response()->json((new CategoryBalanceAnalyticsCollection($categories)));
     }
