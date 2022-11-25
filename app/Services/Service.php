@@ -9,6 +9,6 @@ class Service
 {
     public function addUser(array $array): array
     {
-        return Arr::add($array, 'user_id', auth()->id());
+        return Arr::set($array, 'user_id', auth()->id());
     }
 }

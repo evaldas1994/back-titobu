@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Account;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
@@ -17,6 +18,7 @@ class CategoryFactory extends Factory
             'name' => fake()->words(2, true),
             'balance' => fake()->randomFloat(2,100,300),
             'type' => Arr::random(Category::getTypes()),
+            'account_id' => Arr::random(Account::all()->pluck('id')->toArray()),
         ];
     }
 }
