@@ -32,6 +32,7 @@ class Category extends Model
         'type',
         'account_id',
         'user_id',
+        'purpose_id',
     ];
 
     public function transfers()
@@ -47,5 +48,10 @@ class Category extends Model
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function purpose()
+    {
+        return $this->hasOne(Purpose::class, 'id', 'purpose_id');
     }
 }

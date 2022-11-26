@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use Illuminate\Database\Seeder;
+use App\Models\Category;
 
 class CategorySeeder extends Seeder
 {
@@ -11,40 +11,26 @@ class CategorySeeder extends Seeder
     {
         $data = [
             [
-                'name' => 'Mokesčiai',
-                'balance' => 600.00,
-                'type' => Category::TYPE_OUT,
-            ],
-            [
                 'name' => 'Maistas',
-                'balance' => 240.00,
+                'balance' => 120.00,
                 'type' => Category::TYPE_OUT,
+                'purpose_id' => 1,
+                'account_id' => 1
             ],
             [
-                'name' => 'Transportas',
-                'balance' => 140.00,
+                'name' => 'Mokesčiai',
+                'balance' => 520.00,
                 'type' => Category::TYPE_OUT,
-            ],
-            [
-                'name' => 'Švara',
-                'balance' => 60.00,
-                'type' => Category::TYPE_OUT,
-            ],
-            [
-                'name' => 'Tadas',
-                'balance' => 80.00,
-                'type' => Category::TYPE_OUT,
+                'purpose_id' => 2,
+                'account_id' => 2
             ],
             [
                 'name' => 'Taupymas',
-                'balance' => 100.00,
+                'balance' => 250.00,
                 'type' => Category::TYPE_OUT,
-            ],
-            [
-                'name' => 'UAB Dineta',
-                'balance' => 0,
-                'type' => Category::TYPE_IN,
-            ],
+                'purpose_id' => 3,
+                'account_id' => 3
+            ]
         ];
 
 

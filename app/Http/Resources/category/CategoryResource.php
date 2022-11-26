@@ -18,6 +18,8 @@ class CategoryResource extends BaseResource
             'type' => $this->type,
             'account_id' => $this->account_id,
             'account_name' => $this->account->name,
+            'purpose_id' => $this->purpose_id,
+            'purpose_name' => $this->purpose?->name,
             'transfers' => new TransferCollection($this->transfers),
         ];
     }

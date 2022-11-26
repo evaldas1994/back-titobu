@@ -2,21 +2,21 @@
 
 namespace Database\Seeders;
 
-use App\Models\Account;
+use App\Models\Purpose;
 use Illuminate\Database\Seeder;
 
-class AccountSeeder extends Seeder
+class PurposeSeeder extends Seeder
 {
     public function run()
     {
         $names = [
-            'Maistas',
-            'Mokesčiai',
-            'Taupymas',
+            'Kasdienis',
+            'Sąrašas',
+            'Kaupimas'
         ];
 
         foreach ($names as $name) {
-            Account::factory()->create(
+            Purpose::factory()->create(
                 [
                     'name' => $name,
                 ],

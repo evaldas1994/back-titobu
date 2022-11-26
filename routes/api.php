@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\api\analytics\CategoryBalanceAnalyticsController;
 use App\Http\Controllers\api\category\CategoryController;
+use App\Http\Controllers\api\purpose\PurposeController;
 use App\Http\Controllers\api\transfer\TransferController;
 use App\Http\Controllers\api\account\AccountController;
 use App\Http\Controllers\api\auth\LogoutController;
@@ -25,6 +26,7 @@ Route::middleware(['auth:sanctum'])
         $router->resource('users', UserController::class);
         $router->resource('accounts', AccountController::class);
         $router->resource('categories', CategoryController::class);
+        $router->resource('purposes', PurposeController::class);
 
         $router->prefix('transfers')->name('transfers.')->group(function ($router2) {
             $router2->prefix('get-by-category')->group(function ($router3) {
