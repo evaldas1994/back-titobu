@@ -30,7 +30,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function category()
+    public function categories()
     {
         return $this->hasMany(Category::class, 'user_id', 'id');
     }
