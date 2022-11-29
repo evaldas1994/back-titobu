@@ -12,7 +12,9 @@ class CategoryBalanceAnalyticsResource extends BaseResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'purpose_id' => $this->purpose_id,
             'balance' => $this->floatFormat((new CategoryBalanceService())->calculateBalance($this->resource)),
+            'account_balance' => $this->account->balance,
             'balance_month' => $this->floatFormat($this->balance),
             'balance_day' => $this->floatFormat((new CategoryBalanceService())->calculateBalanceDay($this->resource)),
             'balance_today' => $this->floatFormat((new CategoryBalanceService())->calculateBalanceToday($this->resource)),
