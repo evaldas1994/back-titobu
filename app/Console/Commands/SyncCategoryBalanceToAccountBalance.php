@@ -36,8 +36,8 @@ class SyncCategoryBalanceToAccountBalance extends Command
             foreach ($user->categories as $category) {
                 $transfers->add($category->account->transfers
                     ->where('category_id', '=', $category->id)
-                    ->where('created_at', '>', Carbon::yesterday()->firstOfMonth())
-                    ->where('created_at', '<', Carbon::yesterday()->lastOfMonth())
+                    ->where('created_at', '>', Carbon::yesterday()->startOfMonth())
+                    ->where('created_at', '<', Carbon::yesterday()->endOfMonth())
                 );
 
                 $leftBalance = $category->balance - $transfers->collapse()->pluck('amount')->sum();
