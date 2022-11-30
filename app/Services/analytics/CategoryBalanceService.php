@@ -17,7 +17,7 @@ class CategoryBalanceService
                 ->where('category_id', '=', $category->id)
                 ->where('created_at', '>', Carbon::now()->firstOfMonth())
                 ->where('created_at', '<', Carbon::now()->lastOfMonth())
-                ->where('created_at', '=', Carbon::now()->lastOfMonth())
+                ->or('created_at', '=', Carbon::now()->lastOfMonth())
             );
         }
 
