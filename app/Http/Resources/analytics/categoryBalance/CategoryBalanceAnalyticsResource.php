@@ -18,6 +18,7 @@ class CategoryBalanceAnalyticsResource extends BaseResource
             'balance_month' => $this->floatFormat($this->balance),
             'balance_day' => $this->floatFormat((new CategoryBalanceService())->calculateBalanceDay($this->resource)),
             'balance_today' => $this->floatFormat((new CategoryBalanceService())->calculateBalanceToday($this->resource)),
+            'icon' => $this->icon,
         ];
     }
 }

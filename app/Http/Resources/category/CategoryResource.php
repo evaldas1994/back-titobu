@@ -21,6 +21,7 @@ class CategoryResource extends BaseResource
             'purpose_id' => $this->purpose_id,
             'purpose_name' => $this->purpose?->name,
             'transfers' => new TransferCollection($this->transfers),
+            'icon' => $this->icon
         ];
     }
 }
