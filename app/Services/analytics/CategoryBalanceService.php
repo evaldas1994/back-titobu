@@ -15,9 +15,8 @@ class CategoryBalanceService
         foreach ($accounts as $account) {
             $transfers->add($account->transfers
                 ->where('category_id', '=', $category->id)
-                ->whereRaw("created_at > STR_TO_DATE(?, '%Y-%m-%d %H:%i:%s')" , Carbon::now()->firstOfMonth()->format('Y-m-d H:i:s'))
-//                ->where('created_at', '>=', Carbon::now()->firstOfMonth()->format('Y-m-d H:i'))
-//                ->where('created_at', '<=', Carbon::now()->lastOfMonth()->format('Y-m-d H:i'))
+                ->where('created_at', '>=', Carbon::now()->firstOfMonth())
+                ->where('created_at', '<=', Carbon::now()->lastOfMonth())
             );
         }
 
