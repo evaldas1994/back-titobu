@@ -11,13 +11,13 @@ class CategoryBalanceService
     {
         $transfers = collect();
 
+        dd(Carbon::now()->firstOfMonth(),Carbon::now()->lastOfMonth());
         $accounts = auth()->user()->accounts;
         foreach ($accounts as $account) {
             $transfers->add($account->transfers
                 ->where('category_id', '=', $category->id)
                 ->where('created_at', '>', Carbon::now()->firstOfMonth())
                 ->where('created_at', '<', Carbon::now()->lastOfMonth())
-                ->or('created_at', Carbon::now()->lastOfMonth())
             );
         }
 
