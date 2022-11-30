@@ -15,7 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table(Category::TABLE_NAME, function (Blueprint $table) {
-            $table->string('icon')->default('bi bi-arrow-right-circle icon');
+            $table->string('icon')->default('fa-solid fa-piggy-bank');
         });
     }
 
