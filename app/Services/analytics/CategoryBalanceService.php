@@ -7,6 +7,12 @@ use Carbon\Carbon;
 
 class CategoryBalanceService
 {
+    public function calculateTotalBalance(): float
+    {
+        $accounts = auth()->user()->accounts;
+
+        return $accounts->pluck('balance')->sum();
+    }
     public function calculateBalance(Category $category): float
     {
         $transfers = collect();
