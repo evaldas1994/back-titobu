@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\analytics;
 use App\Http\Resources\analytics\analyticByCategory\AnalyticByCategoryAnalyticsCollection;
 use App\Http\Resources\analytics\expenseByCategory\ExpenseByCategoryAnalyticsCollection;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Services\Service;
 use Illuminate\Http\JsonResponse;
 use App\Models\Category;
@@ -15,14 +16,26 @@ class AnalyticByCategoryAnalyticsController extends Controller
 {
     public function __invoke(): JsonResponse
     {
+
         $service = new Service();
 
         $period = Period::where('period', Carbon::now()->format('Y-m'))
             ->with(['categories', 'categories.transfers'])
             ->first();
 
-        if (!$period)
-            return response()->json((['No period found!']), 422);
+        if (!$period){
+            $thisMonth = Carbon::today()->format('Y-m');
+            $thisPeriod = Period::where('period', $thisMonth)->first();
+
+            if (!$thisPeriod) {
+                $period = Period::create([
+                    'name' => $thisMonth,
+                    'period' => $thisMonth,
+                    'user_id' => User::first()?->id,
+                ]);
+            }
+//            return response()->json((['No period found!']), 422);
+        }
 
         $result = collect();
         foreach ($period->categories->where('type', Category::TYPE_OUT) as $key => $category) {

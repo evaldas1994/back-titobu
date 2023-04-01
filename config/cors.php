@@ -19,9 +19,9 @@ return [
 
     'allowed_methods' => ['get', 'put'],
 // dev
-    'allowed_origins' => [],
+//    'allowed_origins' => [],
 // prod
-//    'allowed_origins' => ['*'],
+    'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
