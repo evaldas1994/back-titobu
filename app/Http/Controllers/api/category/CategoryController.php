@@ -23,7 +23,7 @@ class CategoryController extends Controller
     {
         $categories = Category::whereUserId(auth()->id())
             ->orderBy('created_at', 'desc')
-            ->simplePaginate();
+            ->simplePaginate(500);
 
         return response()->json((new CategoryCollection($categories)));
     }

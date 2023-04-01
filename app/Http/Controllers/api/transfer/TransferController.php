@@ -59,14 +59,4 @@ class TransferController extends Controller
 
         return response()->json(null, 204);
     }
-
-    public function getByCategory(int $categoryId): JsonResponse
-    {
-        $transfers = Transfer::whereUserId(auth()->id())
-            ->whereCategoryId($categoryId)
-            ->orderBy('created_at', 'desc')
-            ->simplePaginate();
-
-        return response()->json((new TransferCollection($transfers)));
-    }
 }

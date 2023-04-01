@@ -11,9 +11,7 @@ class CategoryService extends Service
 {
     public function store(array $validated)
     {
-        $account = $this->getAccount($validated);
-
-        return $account->categories()->create($validated);
+        return Category::create($validated);
     }
 
     public function update(Category $category, array $validated): Category
@@ -26,13 +24,5 @@ class CategoryService extends Service
     public function delete(Category $category): void
     {
         $category->delete();
-    }
-
-    private function getAccount($validated): Account
-    {
-        if (!Arr::exists($validated, 'account_id'))
-            return Account::create($validated);
-        else
-            return Account::find(Arr::get($validated, 'account_id'));
     }
 }

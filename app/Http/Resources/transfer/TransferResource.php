@@ -20,8 +20,8 @@ class TransferResource extends BaseResource
             'amount' => $service->floatFormat($this->amount),
             'category_id' => $this->category_id,
             'category_name' => $this->category->name,
-            'account_id' => $this->account_id,
-            'account_name' => $this->account->name,
+            'period_id' => $this->period_id,
+            'period_name' => $this->period->name,
             'created_at' => $service->dateTimeFormat($this->created_at, 'Y-m-d H:i'),
         ];
     }

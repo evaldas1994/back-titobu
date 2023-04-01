@@ -20,7 +20,7 @@ class Transfer extends Model
         'amount',
         'user_id',
         'category_id',
-        'account_id',
+        'period_id',
     ];
 
     public function user()
@@ -33,8 +33,8 @@ class Transfer extends Model
         return $this->hasOne(Category::class, 'id', 'category_id');
     }
 
-    public function account()
+    public function period()
     {
-        return $this->hasOne(Account::class, 'id', 'account_id');
+        return $this->hasOne(Period::class, 'id', 'period_id');
     }
 }

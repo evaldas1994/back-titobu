@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Category;
 use App\Models\Transfer;
-use App\Models\Account;
+use App\Models\Period;
 use App\Models\User;
 
 return new class extends Migration
@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('name');
             $table->double('amount', 10, 2);
 
-            $table->foreignId('user_id')
-                ->constrained(User::TABLE_NAME)
+            $table->foreignId('period_id')
+                ->constrained(Period::TABLE_NAME)
                 ->restrictOnUpdate()
                 ->restrictOnDelete();
 
@@ -32,8 +32,8 @@ return new class extends Migration
                 ->restrictOnUpdate()
                 ->restrictOnDelete();
 
-            $table->foreignId('account_id')
-                ->constrained(Account::TABLE_NAME)
+            $table->foreignId('user_id')
+                ->constrained(User::TABLE_NAME)
                 ->restrictOnUpdate()
                 ->restrictOnDelete();
 

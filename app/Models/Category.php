@@ -28,11 +28,10 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'balance',
         'type',
-        'account_id',
+        'icon',
+        'color',
         'user_id',
-        'purpose_id',
     ];
 
     public function transfers()
@@ -40,18 +39,8 @@ class Category extends Model
         return $this->hasMany(Transfer::class, 'category_id', 'id');
     }
 
-    public function account()
-    {
-        return $this->belongsTo(Account::class);
-    }
-
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
-    }
-
-    public function purpose()
-    {
-        return $this->hasOne(Purpose::class, 'id', 'purpose_id');
     }
 }

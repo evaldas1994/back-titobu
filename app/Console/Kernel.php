@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\NewPeriod;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -15,7 +16,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('command:syncCategoryBalanceToAccountBalance')->monthly();
+         $schedule->job(new NewPeriod())->monthlyOn('25', '23:00');
+         $schedule->job(new NewPeriod())->lastDayOfMonth('23:55');
     }
 
     /**
