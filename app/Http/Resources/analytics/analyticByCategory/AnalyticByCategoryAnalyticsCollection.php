@@ -20,8 +20,9 @@ class AnalyticByCategoryAnalyticsCollection extends ResourceCollection
 
         return [
             'total' => $total,
-            'total_earnings' => $totalEarnings,
-            'total_expenses' => $totalExpenses,
+            'period_earnings' => $totalEarnings,
+            'period_expenses' => $totalExpenses,
+            'period_savings' => $savingsOfExpenses,
             'total_savings' => $savingsOfSavings,
             'data' => $this->collection,
         ];
