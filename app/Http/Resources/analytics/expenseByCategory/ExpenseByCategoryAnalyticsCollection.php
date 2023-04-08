@@ -11,9 +11,7 @@ class ExpenseByCategoryAnalyticsCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'total' => 0,
-            'total_earnings' => (new EarningByCategoryAnalyticsService())->getTotalOfThisPeriod(),
-            'total_expenses' => (new ExpenseByCategoryAnalyticsService())->getTotalOfThisPeriod(),
+            'total' => (new ExpenseByCategoryAnalyticsService())->getTotalOfThisPeriod(),
             'data' => $this->collection,
         ];
     }

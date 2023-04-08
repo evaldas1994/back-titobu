@@ -18,6 +18,7 @@ class AnalyticByCategoryAnalyticsResource extends BaseResource
             'purpose_id' => $this->purpose_id,
             'icon' => $this->icon,
             'color' => $this->color,
+            'savings' => $this->savings,
 
             'balance_expenses' => $this->balance_expenses,
             'balance_month' => $this->balance_month,

@@ -35,6 +35,7 @@ Route::middleware(['auth:sanctum'])
         $router->apiResource('period-categories', PeriodCategoryController::class);
 
         $router->apiResource('transfers', TransferController::class);
+        $router->get('transfers/by-category/{category}', [TransferController::class, 'indexByCategory']);
 
         $router->prefix('analytics')->name('analytics.')->group(function ($router2) {
 //            $router2->get('balance-by-this-period', BalanceByThisPeriodAnalyticsController::class);

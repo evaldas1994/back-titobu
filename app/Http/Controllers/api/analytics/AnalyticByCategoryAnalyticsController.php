@@ -34,7 +34,6 @@ class AnalyticByCategoryAnalyticsController extends Controller
                     'user_id' => User::first()?->id,
                 ]);
             }
-//            return response()->json((['No period found!']), 422);
         }
 
         $result = collect();
@@ -46,6 +45,7 @@ class AnalyticByCategoryAnalyticsController extends Controller
             $data->purpose_id = 1;
             $data->icon = $category->icon;
             $data->color = $category->color;
+            $data->savings = $category->savings;
 
             $data->balance_expenses = $category->transfers->pluck('amount')->sum();
             $data->balance_month = $category->pivot->limit;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\transfer;
 use App\Http\Requests\transfer\TransferStoreUpdateRequest;
 use App\Http\Resources\transfer\TransferCollection;
 use App\Http\Resources\transfer\TransferResource;
+use App\Models\Category;
 use App\Services\transfer\TransferService;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
@@ -22,6 +23,16 @@ class TransferController extends Controller
     public function index(): JsonResponse
     {
         $transfers = Transfer::whereUserId(auth()->id())
+            ->orderBy('created_at', 'desc')
+            ->simplePaginate();
+
+        return response()->json((new TransferCollection($transfers)));
+    }
+
+    public function indexByCategory(Category $category): JsonResponse
+    {
+        $transfers = Transfer::whereUserId(auth()->id())
+            ->where('category_id', $category?->id)
             ->orderBy('created_at', 'desc')
             ->simplePaginate();
 
