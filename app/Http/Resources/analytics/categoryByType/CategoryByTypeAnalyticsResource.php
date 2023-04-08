@@ -15,11 +15,13 @@ class CategoryByTypeAnalyticsResource extends BaseResource
         $names = [
             'expenses' => 'Išlaidos',
             'incomes' => 'Pajamos',
+            'savings' => 'Santaupos',
         ];
 
         $colors = [
             'expenses' => 'red',
             'incomes' => 'green',
+            'savings' => 'orange',
         ];
 
         return [

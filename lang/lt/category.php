@@ -17,6 +17,7 @@ return [
     'types' => [
         'incomes' => 'Pajamos',
         'expenses' => 'Išlaidos',
+        'savings' => 'Santaupos',
     ],
 
     'colors' => [
