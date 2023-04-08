@@ -15,12 +15,14 @@ class Category extends Model
 
     const TYPE_IN = 'incomes';
     const TYPE_OUT = 'expenses';
+    const TYPE_SAVINGS = 'savings';
 
     static function getTypes()
     {
         return [
             self::TYPE_IN,
             self::TYPE_OUT,
+            self::TYPE_SAVINGS,
         ];
     }
 
