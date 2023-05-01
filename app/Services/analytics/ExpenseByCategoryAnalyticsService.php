@@ -24,8 +24,8 @@ class ExpenseByCategoryAnalyticsService
         $total = $period->categories
             ->where('type', Category::TYPE_OUT)
             ->pluck('transfers')
-            ->where('period_id', $period->id)
             ->collapse()
+            ->where('period_id', $period->id)
             ->pluck('amount')
             ->sum();
 
