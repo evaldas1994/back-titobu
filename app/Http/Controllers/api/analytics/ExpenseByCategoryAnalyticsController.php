@@ -28,7 +28,7 @@ class ExpenseByCategoryAnalyticsController extends Controller
 
             $data->id = $category->id;
             $data->name = $category->name;
-            $data->amount = $category->transfers->pluck('amount')->sum();
+            $data->amount = $category->transfers->where('period_id', $period->f_id)->pluck('amount')->sum();
             $data->color = $category->color;
 
             $result->push($data);

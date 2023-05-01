@@ -47,7 +47,7 @@ class AnalyticByCategoryAnalyticsController extends Controller
             $data->color = $category->color;
             $data->savings = $category->savings;
 
-            $data->balance_expenses = $category->transfers->pluck('amount')->sum();
+            $data->balance_expenses = $category->transfers->where('period_id', $period->f_id)->pluck('amount')->sum();
             $data->balance_month = $category->pivot->limit;
 
             $data->balance_day = $service->floatFormat($data->balance_month / Carbon::now()->daysInMonth);
