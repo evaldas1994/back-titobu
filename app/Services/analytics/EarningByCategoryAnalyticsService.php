@@ -25,6 +25,7 @@ class EarningByCategoryAnalyticsService
             ->where('type', Category::TYPE_IN)
             ->pluck('transfers')
             ->collapse()
+            ->where('period_id', $period->id)
             ->pluck('amount')
             ->sum();
 
